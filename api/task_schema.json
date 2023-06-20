@@ -1,0 +1,108 @@
+{
+    "assignees": [
+      {
+        "created": "string",
+        "email": "string",
+        "id": 0,
+        "name": "string",
+        "updated": "string",
+        "username": "string"
+      }
+    ],
+    "attachments": [
+      {
+        "created": "string",
+        "created_by": {
+          "created": "string",
+          "email": "string",
+          "id": 0,
+          "name": "string",
+          "updated": "string",
+          "username": "string"
+        },
+        "file": {
+          "created": "string",
+          "id": 0,
+          "mime": "string",
+          "name": "string",
+          "size": 0
+        },
+        "id": 0,
+        "task_id": 0
+      }
+    ],
+    "bucket_id": 0,
+    "cover_image_attachment_id": 0,
+    "created": "string",
+    "created_by": {
+      "created": "string",
+      "email": "string",
+      "id": 0,
+      "name": "string",
+      "updated": "string",
+      "username": "string"
+    },
+    "description": "string",
+    "done": true,
+    "done_at": "string",
+    "due_date": "string",
+    "end_date": "string",
+    "hex_color": "string",
+    "id": 0,
+    "identifier": "string",
+    "index": 0,
+    "is_favorite": true,
+    "kanban_position": 0,
+    "labels": [
+      {
+        "created": "string",
+        "created_by": {
+          "created": "string",
+          "email": "string",
+          "id": 0,
+          "name": "string",
+          "updated": "string",
+          "username": "string"
+        },
+        "description": "string",
+        "hex_color": "string",
+        "id": 0,
+        "title": "string",
+        "updated": "string"
+      }
+    ],
+    "list_id": 0,
+    "percent_done": 0,
+    "position": 0,
+    "priority": 0,
+    "related_tasks": {
+      "property1": [
+        {}
+      ],
+      "property2": [
+        {}
+      ]
+    },
+    "reminder_dates": [
+      "string"
+    ],
+    "repeat_after": 0,
+    "repeat_mode": 0,
+    "start_date": "string",
+    "subscription": {
+      "created": "string",
+      "entity": "string",
+      "entity_id": 0,
+      "id": 0,
+      "user": {
+        "created": "string",
+        "email": "string",
+        "id": 0,
+        "name": "string",
+        "updated": "string",
+        "username": "string"
+      }
+    },
+    "title": "string",
+    "updated": "string"
+  }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="bulma.min.css"/>
+  <!-- add popup.css-->
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<!--
+  Header with title and icon from /images folder
+-->
+  <header class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Vikunja
+        </h1>
+        <img src="../images/icon_128.png" alt="Vikunja Icon" width="50" height="50">
+        <h2 class="subtitle">
+          Create Task
+        </h2>
+      </div>
+    </div>
+  </header>
+
+<!--
+  UI for
+  * Drop-Down menu for listing Vikunja Lista
+  * DateTime picker for setting due date
+  * Text input for setting task name, pre-filled with title of the current page
+  * Button for creating task
+-->
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">List</label>
+          <div class="control">
+            <div class="select">
+              <select id="list">
+                <option>Select dropdown</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label">Due Date</label>
+          <div class="control">
+            <input class="input" type="datetime-local" id="dueDate" value=today>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Task Name</label>
+      <div class="control">
+        <input class="input" type="text" id="taskName" value="">
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <button class="button is-link" id="createTask">Create Task</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

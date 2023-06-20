@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Vikunja Chrome-extension",
+  "version": "1.0",
+  "description": "Add links with reminder to a Vikunja list",
+  "$schema": "https://developer.chrome.com/extensions/manifestV3.json",
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "icons": {
+    "32": "images/icon_32.png",
+    "48": "images/icon_48.png",
+    "64": "images/icon_64.png",
+    "128": "images/icon_128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "alarms",
+    "notifications"
+  ],
+  "options_page": "options/options.html"
+}

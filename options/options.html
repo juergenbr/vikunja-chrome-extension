@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="bulma.min.css" />
+    <!-- add popup.css-->
+    <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+    <!--
+        Header with title and icon from /images folder
+    -->
+    <header class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Vikunja
+                </h1>
+                <img src="../images/icon_128.png" alt="Vikunja Icon" width="50" height="50">
+                <h2 class="subtitle">
+                    Vikunjs Connection Settings
+                </h2>
+            </div>
+    </header>
+    <!-- Container for setting the Vikunjs URL and API Token as a password-->
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label">Vikunja URL</label>
+                    <div class="control">
+                        <input class="input" type="text" id="vikunjaUrl">
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">Vikunja API Token</label>
+                    <div class="control">
+                        <input class="input" type="password" id="vikunjaToken">
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">Default List</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="defaultList">
+                                <option>Select dropdown</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Save button to persist settings in Chrome storage-->
+    <div class="container">
+        <div class="field">
+            <div class="control">
+                <button class="button is-primary" id="save">Save</button>
+            </div>
+        </div>
+        <!-- Separator-->
+        <div class="container">
+            <hr>
+        </div>
+        <div class="container">
+            <!--
+            Authentication form with username, password and 2FA code
+        -->
+            <div class="field" hidden="true">
+                <label class="h2">Authentication</label>
+                <div class="control">
+                    <input class="input" type="text" id="username" placeholder="Username">
+                </div>
+                <div class="control">
+                    <input class="input" type="password" id="password" placeholder="Password">
+                </div>
+                <div class="control">
+                    <input class="input" type="text" id="totp_passcode" placeholder="2FA Code">
+                </div>
+                <div class="control">
+                    <button class="button is-primary" id="login">Login</button>
+                </div>
+
+            </div>
+            <script src="options.js"></script>
+</body>
+
+</html>
