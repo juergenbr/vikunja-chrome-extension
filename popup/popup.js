@@ -159,7 +159,9 @@ async function fetchLists(url, token) {
   headers.append('Authorization', `Bearer ${token}`);
   headers.append('Content-Type', 'application/json');
 
-  const response = await fetch(`${url}/api/v1/lists`, {
+  //pre 0.21.0
+  //const response = await fetch(`${url}/api/v1/lists`, {
+  const response = await fetch(`${url}/api/v1/projects`, {
     method: 'GET',
     headers: headers,
   })
@@ -183,7 +185,9 @@ async function createTask(url, token) {
   // current url
   const tabUrl = await getTabUrl();
   console.log(dueDate);
-  const response = await fetch(`${url}/api/v1/lists/${listId}`, {
+  //pre 0.21.0
+  //const response = await fetch(`${url}/api/v1/lists/${listId}`, {
+  const response = await fetch(`${url}/api/v1/projects/${listId}`, {
     method: 'PUT',
     headers: headers,
     body: JSON.stringify(
