@@ -38,8 +38,7 @@ window.onload = () => {
     //set text in the popup UI
     titleElement.value = title;
   });
-  // get current date formated as yyyy-MM-ddThh:mm
-  
+  // get current date formated as yyyy-MM-ddThh:mm in browser's timezone
   dueDateElement.value = new Date().toISOString().slice(0, 16);
 
   checkToken();
@@ -132,6 +131,8 @@ button.addEventListener('click', () => {
         title: 'Vikunja Extension',
         message: 'Task created successfully.',
       });
+      //close popup
+      //window.close();
     });
   });
 });
@@ -179,12 +180,11 @@ async function createTask(url, token) {
   const listId = listElement.value;
   // get due date from the popup UI
   const reminderDate = dueDateElement.value;
-  const reminderDateAsDate = new Date(reminderDate);
-  const reminderDateFormatted = reminderDateAsDate.toISOString();
+  const reminderDateFormatted = new Date(reminderDate).toISOString();
 
   // current url
   const tabUrl = await getTabUrl();
-  console.log(dueDate);
+  console.log(reminderDateFormatted);
   //pre 0.21.0
   //const response = await fetch(`${url}/api/v1/lists/${listId}`, {
   const response = await fetch(`${url}/api/v1/projects/${listId}`, {
@@ -195,7 +195,15 @@ async function createTask(url, token) {
       list_id: parseInt(listElement.value),
       title: titleElement.value,
       description: tabUrl,
-      reminder_dates: [reminderDateFormatted]
+      due_date: reminderDateFormatted,
+      reminders: [
+        {
+          relative_period: 0,
+          relative_to: "due_date",
+          reminder: "1970-01-01T00:00:00.000Z"
+        }
+      ]
+      //reminder_dates: [reminderDateFormatted]
       }
     ),
   })
