@@ -125,14 +125,8 @@ button.addEventListener('click', () => {
     createTask(settings.url, settings.token).then((task) => {
       // show notification
       console.log(task);
-      chrome.notifications.create({
-        type: 'basic',
-        iconUrl: '../images/icon_128.png',
-        title: 'Vikunja Extension',
-        message: 'Task created successfully.',
-      });
       //close popup
-      //window.close();
+      window.close();
     });
   });
 });
@@ -208,6 +202,22 @@ async function createTask(url, token) {
     ),
   })
   console.log(response);
+  if(response.status >=200 && response.status < 300){
+    chrome.notifications.create({
+      type: 'basic',
+      iconUrl: '../images/icon_128.png',
+      title: 'Vikunja Extension',
+      message: 'Task created successfully.',
+    });
+  }
+  else{
+    chrome.notifications.create({
+      type: 'basic',
+      iconUrl: '../images/icon_128.png',
+      title: 'Vikunja Extension',
+      message: 'Task creation failed with error ' + response.statusText,
+    });
+  }
   const jsonData = await response.json();
   console.log(jsonData);
   return jsonData;
