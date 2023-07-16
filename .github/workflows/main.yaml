@@ -36,5 +36,5 @@ jobs:
                 # zip file made at the packExtensionDir step
                 zipFilePath: 'build/extension.zip'
                 crxFilePath: 'build/extension.crx'
-                privateKey: key.pem
+                privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
     
