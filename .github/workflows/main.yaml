@@ -16,13 +16,6 @@ jobs:
                 sparse-checkout: |
                   .github
                   extension
-            - id: setup-key
-              env:
-                  PRIVATE_KEY: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
-              run: |
-                  echo "$PRIVATE_KEY" >> key.pem
-                  chmod 400 key.pem
-                  cat key.pem
             # pack zip and read manifest, can be reused in the following steps
             - id: packExtensionDir
               uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
