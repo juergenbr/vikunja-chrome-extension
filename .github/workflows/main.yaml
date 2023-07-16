@@ -3,12 +3,18 @@ name: Release Workflow
 on:
   push:
     branches:
-      - release*
+      - release
 
 jobs:
     release:
         runs-on: ubuntu-latest
         steps:
+            - id: checkout
+              uses: actions/checkout@v3
+              with:
+                sparse-checkout: |
+                  .github
+                  extension
             # pack zip and read manifest, can be reused in the following steps
             - id: packExtensionDir
               uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
@@ -16,7 +22,8 @@ jobs:
                 extensionDir: 'extension'
                 zipFilePath: 'build/extension.zip'
 
-            - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+            - id: createCrx
+              uses: cardinalby/webext-buildtools-chrome-crx-action@v2
               with:
                 # zip file made at the packExtensionDir step
                 zipFilePath: 'build/extension.zip'
