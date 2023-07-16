@@ -9,6 +9,12 @@ jobs:
     release:
         runs-on: ubuntu-latest
         steps:
+            - id: setup-key
+              env:
+                PRIVATE_KEY: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
+              run: |
+                echo "$PRIVATE_KEY" >> $HOME/key.pem
+                chmod 400 $HOME/key.pem
             - id: checkout
               uses: actions/checkout@v3
               with:
@@ -28,5 +34,5 @@ jobs:
                 # zip file made at the packExtensionDir step
                 zipFilePath: 'build/extension.zip'
                 crxFilePath: 'build/extension.crx'
-                privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
+                privateKey: $HOME/key.pem
     
