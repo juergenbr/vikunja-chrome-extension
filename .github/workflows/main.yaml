@@ -1,9 +1,9 @@
 # trigger on release branch
 name: Release Workflow
 on:
-  pull_request:
-    types: [closed]
   push:
+    branches:
+      - release
     tags:
       - 'release/*'
 
@@ -19,7 +19,7 @@ jobs:
                 fetch-depth: 0
             - name: Get Release Version
               id: get_release_version
-              run: echo ::set-output name=version::${GITHUB_REF#refs/tags/release/}
+              run: echo name=version::${GITHUB_REF#refs/tags/release/} >> $GITHUB_OUTPUT
               shell: bash
               env:
                 GITHUB_REF: ${{ github.ref }}
