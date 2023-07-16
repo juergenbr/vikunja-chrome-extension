@@ -1,9 +1,11 @@
 # trigger on release branch
 name: Release Workflow
 on:
+  pull_request:
+    types: [closed]
   push:
-    branches:
-      - release
+    tags:
+      - 'release/*'
 
 jobs:
     release:
