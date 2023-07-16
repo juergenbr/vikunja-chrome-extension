@@ -60,8 +60,19 @@ jobs:
                     Release ${{ env.RELEASE_VERSION }}
                   draft: false
                   prerelease: false
+            # upload crx file as release asset
+            - name: Upload Release Asset
+              id: upload-release-asset
+              uses: actions/upload-release-asset@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  upload_url: ${{ steps.create_release.outputs.upload_url }}
+                  asset_path: build/extension.crx
+                  asset_name: extension-${{ env.RELEASE_VERSION }}.crx
+                  asset_content_type: application/x-chrome-extension
             - name: Upload Artifact
               uses: actions/upload-artifact@v2
               with:
-                  name: vikunja-chrome-extension
+                  name: extension.crx
                   path: build/extension.crx
