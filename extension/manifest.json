@@ -18,7 +18,6 @@
     "type": "module"
   },
   "permissions": [
-    "contextMenus",
     "storage",
     "activeTab",
     "tabs",
