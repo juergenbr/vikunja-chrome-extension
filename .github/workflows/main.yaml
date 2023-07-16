@@ -1,0 +1,25 @@
+# trigger on release branch
+name: Release Workflow
+on:
+  push:
+    branches:
+      - release*
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            # pack zip and read manifest, can be reused in the following steps
+            - id: packExtensionDir
+              uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
+              with:
+                extensionDir: 'extension'
+                zipFilePath: 'build/extension.zip'
+
+            - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+              with:
+                # zip file made at the packExtensionDir step
+                zipFilePath: 'build/extension.zip'
+                crxFilePath: 'build/extension.crx'
+                privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
+    
