@@ -2,8 +2,6 @@
 name: Release Workflow
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
 
