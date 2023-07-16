@@ -9,25 +9,47 @@ jobs:
     release:
         runs-on: ubuntu-latest
         steps:
-            
-            - id: checkout
-              uses: actions/checkout@v3
+            - name: Checkout
+              id: checkout
+              uses: actions/checkout@v2
               with:
-                sparse-checkout: |
-                  .github
-                  extension
-            # pack zip and read manifest, can be reused in the following steps
-            - id: packExtensionDir
+                ref: ${{ github.ref }}
+                fetch-depth: 0
+            - name: Get Release Version
+              id: get_release_version
+              run: echo ::set-output name=version::${GITHUB_REF#refs/tags/release/}
+              shell: bash
+              env:
+                GITHUB_REF: ${{ github.ref }}
+            - name: Create Extension .zip
+              id: packExtensionDir
               uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
               with:
                 extensionDir: 'extension'
                 zipFilePath: 'build/extension.zip'
 
-            - id: createCrx
+            - name: Create CRX
+              id: createCrx
               uses: cardinalby/webext-buildtools-chrome-crx-action@v2
               with:
                 # zip file made at the packExtensionDir step
                 zipFilePath: 'build/extension.zip'
                 crxFilePath: 'build/extension.crx'
                 privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
-    
+            - name: Create Release
+              id: create_release
+              uses: actions/create-release@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  tag_name: ${{ steps.get_release_version.outputs.version }}
+                  release_name: Release ${{ steps.get_release_version.outputs.version }}
+                  body: |
+                    Release ${{ steps.get_release_version.outputs.version }}
+                  draft: false
+                  prerelease: false
+            - name: Upload Artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: vikunja-chrome-extension
+                  path: build/extension.crx
