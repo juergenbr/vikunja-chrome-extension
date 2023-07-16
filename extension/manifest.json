@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Vikunja Chrome-extension",
-  "version": "1.0-beta",
+  "version": "1.0",
   "description": "Add links with reminder to a Vikunja list",
   "$schema": "https://developer.chrome.com/extensions/manifestV3.json",
   "action": {
