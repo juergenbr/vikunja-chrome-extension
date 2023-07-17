@@ -21,7 +21,6 @@
     "storage",
     "activeTab",
     "tabs",
-    "alarms",
     "notifications"
   ],
   "options_page": "options/options.html"
