@@ -1,4 +1,4 @@
-# <img src="doc/images/icon_48.png" width="45" align="left"> Vikunja Chrome Extrension (inofficial)
+# <img src="doc/images/icon_48.png" width="45" align="left"> Vikunja Chrome Extension (inofficial)
 
 ## Screenshots
 <img src="doc/images/popup.png" width="200"> 
